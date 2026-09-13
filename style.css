@@ -1,0 +1,118 @@
+html {
+    scroll-behavior: smooth;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+
+
+
+body {
+    color:white;
+    text-align: center;
+    background-color:rgb(2, 2, 32);
+    margin: 0;
+
+
+}
+
+h2 {
+    color:white;
+}
+
+.dieux {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    background-color:cornflowerblue;
+    width: 300px;
+    box-shadow: 0 4px 10px gray;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+
+}
+
+.dieu-zeus {
+    background-color:rgb(211, 181, 9);
+}
+
+.dieu-poseidon {
+    background-color:rgb(6, 182, 182);
+}
+
+.dieu-hades {
+    background-color:rgb(26, 24, 24);
+}
+
+.fleche {
+    font-size: 2rem;
+    color: white;
+    align-self: center;
+}
+
+#arbre {
+    position: relative;
+    padding: 40px 20px;
+}
+
+.niveau {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 70px; /* de la place pour dessiner les lignes entre les rangées */
+    position: relative;
+    z-index: 1; /* pour que les cartes restent au-dessus des lignes */
+}
+
+
+#svg-liens {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* pour que les clics traversent le SVG jusqu'aux cartes */
+}
+
+.lien-filiation {
+    stroke: white;
+    stroke-width: 2;
+}
+
+.lien-frere {
+    stroke: white;
+    stroke-width: 2;
+    stroke-dasharray: 6 4; /* ligne en pointillés pour bien la distinguer */
+}
+
+.lien-conjoint {
+    stroke: rgb(233, 83, 108);
+    stroke-width: 2.5;
+    stroke-dasharray: 10 2; /* pointillés plus courts et serrés que ceux des frères/sœurs */
+}
+
+.pointe-fleche {
+    fill: white;
+}
+
+.bouton-masquer {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.bouton-masquer:hover {
+    background: rgba(0, 0, 0, 0.6);
+}

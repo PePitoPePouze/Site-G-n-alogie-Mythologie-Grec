@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Mythologie grecque</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <h1>Les dieux de la mythologie grecque</h1>
+
+        <p>Bienvenue sur mon site!</p>
+        <p>Explorez les relations entre les dieux grecs.</p>
+        <p>Les dieux ont des relations familiales complexes.</p>
+
+        <div class="arbre" id="arbre">
+
+            <div class="dieux dieu-cronos" id="cronos">
+                <h2>Cronos</h2>
+             <p>Titan du temps</p>
+             <h3>Enfants</h3>
+              <ul>
+                 <li><a href="#zeus" data-type="enfant">Zeus</a></li>
+                 <li><a href="#poseidon" data-type="enfant">Poséidon</a></li>
+                 <li><a href="#hades" data-type="enfant">Hadès</a></li>
+             </ul>
+             <h3>Frères et Soeurs</h3>
+             <ul>
+                 <li><a href="#rhea" data-type="frere">Rhéa</a></li>
+             </ul>
+             <h3>Conjoint(e)</h3>
+             <ul>
+                 <li><a href="#rhea" data-type="conjoint">Rhéa</a></li>
+             </ul>
+
+            </div>
+
+            <div class="dieux dieu-rhea" id="rhea">
+                <h2>Rhéa</h2>
+                <p>Titane de la fertilité</p>
+                <h3>Enfants</h3>
+                <ul>
+                    <li><a href="#zeus" data-type="enfant">Zeus</a></li>
+                    <li><a href="#poseidon" data-type="enfant">Poséidon</a></li>
+                    <li><a href="#hades" data-type="enfant">Hadès</a></li>
+                </ul>
+                <h3>Frères et Soeurs</h3>
+                <ul>
+                    <li><a href="#cronos" data-type="frere">Cronos</a></li>
+                </ul>
+                <h3>Conjoint(e)</h3>
+                <ul>
+                    <li><a href="#cronos" data-type="conjoint">Cronos</a></li>
+                </ul>
+
+            </div>
+
+            <div class="dieux dieu-zeus" id="zeus">
+                <h2>Zeus</h2>
+                <p>Dieu du ciel et de la foudre</p>
+
+                <h3>Parents</h3>
+                <ul>
+                    <li><a href="#cronos" data-type="parent">Cronos</a></li>
+                    <li><a href="#rhea" data-type="parent">Rhéa</a></li>
+                </ul>
+                
+                <h3>Enfants</h3>
+                <ul>
+                    <li><a href="#athena" data-type="enfant">Athéna</a></li>
+                    <li><a href="#ares" data-type="enfant">Arès</a></li>
+                    <li><a href="#apollo" data-type="enfant">Apollon</a></li>
+                    <li><a href="#artemis" data-type="enfant">Artémis</a></li>
+                </ul>
+                <h3>Frères et Soeurs</h3>
+                <ul>
+                    <li><a href="#poseidon" data-type="frere">Poséidon</a></li>
+                    <li><a href="#hades" data-type="frere">Hades</a></li>
+                </ul>
+            </div>
+
+            <div class="dieux dieu-poseidon" id="poseidon">
+                <h2>Poséidon</h2>
+                <p>Dieu de la mer</p>
+                <h3>Parents</h3>
+                <ul>
+                    <li><a href="#cronos" data-type="parent">Cronos</a></li>
+                    <li><a href="#rhea" data-type="parent">Rhéa</a></li>
+                </ul>
+                <h3>Enfants</h3>
+                <ul>
+                    <li><a href="#polypheme" data-type="enfant">Polyphème</a></li>
+                </ul>
+                <h3>Frères et Soeurs</h3>
+                <ul>
+                    <li><a href="#zeus" data-type="frere">Zeus</a></li>
+                    <li><a href="#hades" data-type="frere">Hades</a></li>
+                </ul>
+            </div>
+
+            <div class="dieux dieu-hades" id="hades">
+                    <h2>Hades</h2>
+                    <p>Dieu des enfers</p>
+                    <h3>Parents</h3>
+                    <ul>
+                        <li><a href="#cronos" data-type="parent">Cronos</a></li>
+                        <li><a href="#rhea" data-type="parent">Rhéa</a></li>
+                    </ul>
+                    <h3>Frères et Soeurs</h3>
+                    <ul>
+                        <li><a href="#zeus" data-type="frere">Zeus</a></li>
+                        <li><a href="#poseidon" data-type="frere">Poséidon</a></li>
+                    </ul>
+            </div>
+
+        
+        </div> 
+        <script src="script.js"></script>
+    </body>
+</html>
