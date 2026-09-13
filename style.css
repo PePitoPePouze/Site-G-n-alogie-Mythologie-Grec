@@ -48,6 +48,18 @@ h2 {
     background-color:rgb(26, 24, 24);
 }
 
+.dieu-cronos {
+    background-color:rgb(235, 191, 126);
+}
+
+.dieu-rhea {
+    background-color:rgb(202, 187, 165);
+}
+
+.dieu-héra {
+    background-color:royalblue;
+}
+
 .fleche {
     font-size: 2rem;
     color: white;
@@ -78,7 +90,7 @@ h2 {
 }
 
 .lien-filiation {
-    stroke: white;
+    stroke: rgb(245, 86, 113);
     stroke-width: 2;
 }
 
@@ -89,13 +101,13 @@ h2 {
 }
 
 .lien-conjoint {
-    stroke: rgb(233, 83, 108);
+    stroke:  rgb(245, 86, 113);
     stroke-width: 2.5;
     stroke-dasharray: 10 2; /* pointillés plus courts et serrés que ceux des frères/sœurs */
 }
 
 .pointe-fleche {
-    fill: white;
+    fill:  rgb(245, 86, 113);
 }
 
 .bouton-masquer {
