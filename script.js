@@ -62,32 +62,67 @@ document.querySelectorAll(".dieux a").forEach((lien) => {
     });
 });
 
-// renvoie l'id du conjoint d'un dieu, ou null s'il n'en a pas
-function trouverConjoint(id) {
-    const lien = liensBruts.find(
-        (b) => b.type === "conjoint" && (b.origine === id || b.cible === id)
-    );
-    if (!lien) return null;
-    return lien.origine === id ? lien.cible : lien.origine;
+function trouverConjointPourEnfant(idParent, idEnfant) {
+    // On cherche les parents de l'enfant
+    const parents = liensBruts
+        .filter((b) => {
+            if (b.type === "parent") {
+                return b.origine === idEnfant;
+            }
+
+            if (b.type === "enfant") {
+                return b.cible === idEnfant;
+            }
+
+            return false;
+        })
+        .map((b) => {
+            if (b.type === "parent") {
+                return b.cible;
+            }
+
+            return b.origine;
+        });
+
+    // Parmi les parents, on cherche le conjoint du parent actuel
+    const conjoint = parents.find((parent) => {
+        return liensBruts.some(
+            (b) =>
+                b.type === "conjoint" &&
+                (
+                    (b.origine === idParent && b.cible === parent) ||
+                    (b.origine === parent && b.cible === idParent)
+                )
+        );
+    });
+
+    return conjoint || null;
 }
 
 // les liens de filiation (parent → enfant), un seul par enfant
 function calculerRelationsFiliation() {
     const relations = [];
-    const dejaAjoutees = new Set();
+    const enfantsTraites = new Set();
 
     liensBruts.forEach((brut) => {
         if (brut.type !== "enfant" && brut.type !== "parent") return;
-        if (!arbre.includes(brut.origine) || !arbre.includes(brut.cible)) return;
 
         const parent = brut.type === "enfant" ? brut.origine : brut.cible;
         const enfant = brut.type === "enfant" ? brut.cible : brut.origine;
-        const cle = `${parent}:${enfant}`;
 
-        if (!dejaAjoutees.has(cle)) {
-            dejaAjoutees.add(cle);
-            relations.push({ type: "filiation", parent, enfant });
-        }
+        if (!arbre.includes(parent) || !arbre.includes(enfant)) return;
+
+        // Si cet enfant a déjà une relation de filiation
+        // avec un couple affiché, on ne la dessine pas une deuxième fois.
+        if (enfantsTraites.has(enfant)) return;
+
+        enfantsTraites.add(enfant);
+
+        relations.push({
+            type: "filiation",
+            parent,
+            enfant
+        });
     });
 
     return relations;
@@ -177,8 +212,8 @@ function construireArbre() {
 // calcule le point de départ d'une ligne de filiation : soit le milieu
 // de la barre de mariage (si le parent a un conjoint affiché), soit le
 // bas de la carte du parent seul
-function pointDepartFiliation(idParent, rectConteneur) {
-    const conjointId = trouverConjoint(idParent);
+function pointDepartFiliation(idParent, idEnfant, rectConteneur) {
+    const conjointId = trouverConjointPourEnfant(idParent, idEnfant);
 
     if (conjointId && arbre.includes(conjointId)) {
         const pRect = document.getElementById(idParent).getBoundingClientRect();
@@ -242,7 +277,7 @@ function dessinerLiens() {
 
     // 2. les lignes de filiation, depuis le milieu du couple (ou le parent seul)
     filiations.forEach((rel) => {
-        const depart = pointDepartFiliation(rel.parent, rectConteneur);
+        const depart = pointDepartFiliation(rel.parent,rel.enfant, rectConteneur);
         const eRect = document.getElementById(rel.enfant).getBoundingClientRect();
 
         const ligne = document.createElementNS(svgNS, "line");
